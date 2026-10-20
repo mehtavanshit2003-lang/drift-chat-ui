@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A responsive recreation of the Drift anonymous chat product design."
+    />
+    <title>Drift — Random chat</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <svg class="svg-sprite" aria-hidden="true" focusable="false">
+      <symbol id="icon-random" viewBox="0 0 24 24">
+        <path d="M4 7h3.2c1.3 0 2.2.5 3 1.5l4.6 6c.7.9 1.6 1.5 3 1.5H20M17 5l3 2-3 2M4 17h3.2c1.3 0 2.2-.5 3-1.5l4.6-6c.7-.9 1.6-1.5 3-1.5H20M17 15l3 2-3 2" />
+      </symbol>
+      <symbol id="icon-message" viewBox="0 0 24 24">
+        <path d="M20 11.5a7.5 7.5 0 0 1-7.8 7.5 8.8 8.8 0 0 1-3.4-.7L4 20l1.5-4.1A7.1 7.1 0 0 1 4 11.5 7.5 7.5 0 0 1 11.8 4 7.5 7.5 0 0 1 20 11.5Z" />
+      </symbol>
+      <symbol id="icon-users" viewBox="0 0 24 24">
+        <path d="M16 20v-1.6c0-2-1.8-3.7-4-3.7H7c-2.2 0-4 1.7-4 3.7V20M9.5 11.5a3.7 3.7 0 1 0 0-7.4 3.7 3.7 0 0 0 0 7.4ZM17.2 4.4a3.6 3.6 0 0 1 0 7M21 20v-1.6c0-1.6-1.1-3-2.7-3.5" />
+      </symbol>
+      <symbol id="icon-settings" viewBox="0 0 24 24">
+        <path d="M4 6h5M15 6h5M9 4v4M4 12h9M19 12h1M13 10v4M4 18h3M13 18h7M9 16v4" />
+      </symbol>
+      <symbol id="icon-search" viewBox="0 0 24 24">
+        <circle cx="11" cy="11" r="6" />
+        <path d="m16 16 4 4" />
+      </symbol>
+      <symbol id="icon-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" /></symbol>
+      <symbol id="icon-chevron" viewBox="0 0 24 24"><path d="m7 10 5 5 5-5" /></symbol>
+      <symbol id="icon-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" /></symbol>
+      <symbol id="icon-send" viewBox="0 0 24 24"><path d="m21 3-7.4 18-3.2-7.4L3 10.4 21 3ZM10.4 13.6 15 9" /></symbol>
+      <symbol id="icon-smile" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" /><path d="M8.5 14.5s1.2 1.5 3.5 1.5 3.5-1.5 3.5-1.5M9 9.5h.01M15 9.5h.01" /></symbol>
+      <symbol id="icon-image" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2" /><circle cx="9" cy="9" r="1.3" /><path d="m5 17 4.5-4 3.2 2.7 2.3-2 4 3.3" /></symbol>
+      <symbol id="icon-flag" viewBox="0 0 24 24"><path d="M5 21V4M5 5c4-2 6 2 10 0l1 8c-4 2-6-2-10 0" /></symbol>
+      <symbol id="icon-block" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" /><path d="m6.3 6.3 11.4 11.4" /></symbol>
+      <symbol id="icon-heart" viewBox="0 0 24 24"><path d="M20.8 8.4c0 5-8.8 10.7-8.8 10.7S3.2 13.4 3.2 8.4A4.6 4.6 0 0 1 12 6.5a4.6 4.6 0 0 1 8.8 1.9Z" /></symbol>
+      <symbol id="icon-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" /><path d="M4.4 12h15.2M12 4c2 2.2 3.1 5 3.1 8S14 17.8 12 20c-2-2.2-3.1-5-3.1-8S10 6.2 12 4" /></symbol>
+      <symbol id="icon-lock" viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="10" rx="2" /><path d="M8 10V7a4 4 0 1 1 8 0v3" /></symbol>
+      <symbol id="icon-bolt" viewBox="0 0 24 24"><path d="m13 2-8 12h6l-1 8 9-13h-6V2Z" /></symbol>
+      <symbol id="icon-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5" /><path d="M5 20v-1.4c0-3 3.1-5.5 7-5.5s7 2.5 7 5.5V20" /></symbol>
+      <symbol id="icon-edit" viewBox="0 0 24 24"><path d="m4 17.5-.7 3.2 3.2-.7L18 8.5 15.5 6 4 17.5ZM14.4 7.1 16.9 9.6" /></symbol>
+      <symbol id="icon-more" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1" fill="currentColor" stroke="none" /><circle cx="12" cy="12" r="1" fill="currentColor" stroke="none" /><circle cx="19" cy="12" r="1" fill="currentColor" stroke="none" /></symbol>
+      <symbol id="icon-moon" viewBox="0 0 24 24"><path d="M19.3 15.2A7.6 7.6 0 0 1 8.8 4.7 7.6 7.6 0 1 0 19.3 15.2Z" /></symbol>
+      <symbol id="icon-back" viewBox="0 0 24 24"><path d="m14 6-6 6 6 6M8 12h12" /></symbol>
+      <symbol id="icon-pin" viewBox="0 0 24 24"><path d="m15 4 5 5-3 1.5-3.5 3.5 1 4-1 1-4-4-4 1-1-1 4-4L10 7l1.5-3L15 4Z" /></symbol>
+      <symbol id="icon-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" /><path d="M12 11v5M12 8h.01" /></symbol>
+      <symbol id="icon-camera" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="12" rx="2" /><path d="M8 7 9.5 4h5L16 7" /><circle cx="12" cy="13" r="3" /></symbol>
+      <symbol id="icon-film" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2" /><path d="M8 3v18M16 3v18M4 8h4M16 8h4M4 16h4M16 16h4" /></symbol>
+      <symbol id="icon-music" viewBox="0 0 24 24"><path d="M8 18.5a2.5 2.5 0 1 1-2.5-2.5A2.5 2.5 0 0 1 8 18.5ZM18 16.5a2.5 2.5 0 1 1-2.5-2.5A2.5 2.5 0 0 1 18 16.5ZM8 16V5l10-2v11" /></symbol>
+      <symbol id="icon-book" viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H12v16H6.5A2.5 2.5 0 0 0 4 21.5v-16ZM20 5.5A2.5 2.5 0 0 0 17.5 3H12v16h5.5a2.5 2.5 0 0 1 2.5 2.5v-16Z" /></symbol>
+      <symbol id="icon-game" viewBox="0 0 24 24"><path d="M7 10h10c2.3 0 4 1.8 4 4.1 0 2.1-1.6 4-3.5 4.2-1.4.2-2.5-1.4-3.7-1.4h-3.6c-1.2 0-2.3 1.6-3.7 1.4C3.6 18 2 16.2 2 14.1 2 11.8 3.7 10 6 10h1ZM6 14h3M7.5 12.5v3M16 13.5h.01M18 15h.01" /></symbol>
+      <symbol id="icon-code" viewBox="0 0 24 24"><path d="m9 6-6 6 6 6M15 6l6 6-6 6" /></symbol>
+    </svg>
+
+    <div id="app">
+      <section id="landing-view" class="landing-view">
+        <header class="landing-header landing-width">
+          <button class="brand brand-button" data-action="home" aria-label="Drift home">
+            <span class="brand-mark">d.</span><span class="brand-word">drift</span>
+          </button>
+          <div class="header-actions">
+            <button class="text-button" data-toast="Log in is ready in the full product.">Log in</button>
+            <button class="button button-secondary" data-toast="Account creation is ready in the full product.">Create account</button>
+          </div>
+        </header>
+
+        <main class="landing-main landing-width">
+          <div class="landing-copy">
+            <div class="live-pill"><span class="dot"></span>2,418 people chatting now</div>
+            <h1>Random Chat — Connect<br class="desktop-only" /> with Strangers Instantly</h1>
+            <div class="value-pills" aria-label="Drift benefits">
+              <span><b>✓</b> Free</span><span><b>✓</b> Anonymous</span><span><b>✓</b> Safe</span><span><b>✓</b> Fun</span>
+            </div>
+            <div class="benefit-grid">
+              <article><span class="feature-icon"><svg><use href="#icon-globe" /></svg></span><div><h2>Global</h2><p>Meet people from different places and perspectives.</p></div></article>
+              <article><span class="feature-icon"><svg><use href="#icon-lock" /></svg></span><div><h2>Privacy-minded</h2><p>Start as a guest and choose what to share.</p></div></article>
+              <article><span class="feature-icon"><svg><use href="#icon-bolt" /></svg></span><div><h2>Instant</h2><p>Get into a conversation without a long sign-up.</p></div></article>
+              <article><span class="feature-icon"><svg><use href="#icon-user" /></svg></span><div><h2>Guest friendly</h2><p>No registration needed — just pick a name.</p></div></article>
+            </div>
+          </div>
+
+          <form id="start-form" class="start-card" novalidate>
+            <h2>Start chatting</h2>
+            <p class="card-intro">No account needed. Share only what you’re comfortable with.</p>
+            <label class="field-label" for="username">Username</label>
+            <input id="username" class="field" name="username" placeholder="e.g. moonlitday" autocomplete="nickname" />
+            <small class="field-help">Choose a name that feels like you.</small>
+            <span id="username-error" class="field-error" aria-live="polite"></span>
+
+            <fieldset class="gender-options">
+              <legend>I am</legend>
+              <label><input type="radio" name="gender" value="Female" /><span>Female</span></label>
+              <label><input type="radio" name="gender" value="Male" /><span>Male</span></label>
+              <label><input type="radio" name="gender" value="Other" /><span>Other</span></label>
+            </fieldset>
+
+            <div class="select-row">
+              <label><span class="field-label">Age <em>18+</em></span><span class="select-wrap"><select id="age"><option value="">Select age</option><option>18–24</option><option>25–30</option><option>31–35</option><option>36–40</option><option>41+</option></select><svg><use href="#icon-chevron" /></svg></span></label>
+              <label><span class="field-label">Country</span><span class="select-wrap"><select id="country"><option>India</option><option>United States</option><option>United Kingdom</option><option>Canada</option><option>Australia</option></select><svg><use href="#icon-chevron" /></svg></span></label>
+            </div>
+            <label class="region-label"><span class="field-label">State / region <em>optional</em></span><span class="select-wrap"><select id="region"><option>Any region</option><option>Delhi</option><option>Mumbai</option><option>Bengaluru</option><option>Kolkata</option></select><svg><use href="#icon-chevron" /></svg></span></label>
+            <label class="consent"><input id="consent" type="checkbox" /><span>I’m 18 or older and agree to the <button type="button" data-toast="Terms & Privacy Policy are available in the full product.">Terms &amp; Privacy Policy.</button></span></label>
+            <span id="consent-error" class="field-error" aria-live="polite"></span>
+            <button class="button button-primary start-button" type="submit">Start chat now <svg><use href="#icon-arrow" /></svg></button>
+            <p class="signin-copy">Already have an account? <button type="button" data-toast="Log in is ready in the full product.">Log in</button></p>
+          </form>
+        </main>
+
+        <footer class="landing-footer landing-width">
+          <div class="ad-banner"><span>ADVERTISEMENT</span><b>Homepage banner · 728 × 90</b></div>
+          <div class="legal-links"><button>Terms</button><button>Privacy</button><button>Safety tips</button><span>© Drift</span></div>
+        </footer>
+      </section>
+
+      <section id="product-view" class="product-view" hidden>
+        <div class="app-shell">
+          <aside class="sidebar">
+            <button class="brand brand-button" data-action="home" aria-label="Drift home"><span class="brand-mark">d.</span><span class="brand-word">drift</span></button>
+            <nav class="side-nav" aria-label="Main navigation">
+              <button class="nav-item active" data-page-target="chat"><svg><use href="#icon-random" /></svg><span>Random chat</span></button>
+              <button class="nav-item" data-page-target="messages"><svg><use href="#icon-message" /></svg><span>Messages</span><b class="notification-count">3</b></button>
+              <button class="nav-item" data-page-target="groups"><svg><use href="#icon-users" /></svg><span>Groups</span></button>
+              <button class="nav-item" data-page-target="settings"><svg><use href="#icon-settings" /></svg><span>Settings</span></button>
+            </nav>
+            <div class="sidebar-lower">
+              <div class="ad-square"><span>ADVERTISEMENT</span><b>Ad slot<br />224 × 168</b></div>
+              <div class="sidebar-user">
+                <span class="avatar avatar-blue">M<i></i></span><span><b class="display-name">moonlight</b><small>Guest</small></span><button class="icon-button moon-toggle" aria-label="Toggle theme"><svg><use href="#icon-moon" /></svg></button>
+              </div>
+            </div>
+          </aside>
+
+          <main class="stage">
+            <section id="chat-page" class="page active" aria-label="Random chat">
+              <div class="page-top chat-page-top">
+                <div><h1>Random chat</h1><p>Meet someone new. Be kind and never share personal details.</p></div>
+                <button class="live-pill online-pill"><span class="dot"></span>2,418 online</button>
+              </div>
+              <div class="chat-layout">
+                <article class="chat-card">
+                  <header class="conversation-header">
+                    <div class="contact"><span class="avatar avatar-question">?</span><span><b>Stranger</b><small><i class="online-dot"></i> Connected · Male, 24 · Mumbai, IN</small></span></div>
+                    <div class="conversation-actions"><button class="button button-quiet report-trigger"><svg><use href="#icon-flag" /></svg>Report</button><button class="button button-quiet" data-toast="Stranger blocked for this demo."><svg><use href="#icon-block" /></svg>Block</button></div>
+                  </header>
+                  <div class="chat-messages" id="random-messages">
+                    <div class="safety-notice">You’re connected with a stranger. Say hi, and keep personal info private.</div>
+                    <div class="bubble incoming">hey! where are you from?<small>10:41</small></div>
+                    <div class="bubble outgoing">Delhi, you?<small>10:41 <span>✓✓</span></small></div>
+                    <div class="bubble incoming">Mumbai :) just got off work<small>10:42</small></div>
+                    <div class="bubble outgoing">same, long day. any good movies lately?<small>10:42 <span>✓✓</span></small></div>
+                    <div class="bubble incoming">omg yes, I have so many recs<small>10:43</small></div>
+                    <div class="typing"><span></span><span></span><span></span></div>
+                  </div>
+                  <footer class="composer chat-composer" data-composer="random-messages">
+                    <button class="button button-quiet stop-button"><span class="close-icon">×</span>Stop</button>
+                    <button class="button button-primary next-button"><svg><use href="#icon-random" /></svg>Next <kbd>Esc</kbd></button>
+                    <button class="icon-button desktop-composer-extra" aria-label="Send an image"><svg><use href="#icon-image" /></svg></button>
+                    <input aria-label="Type a message" placeholder="Type a message" />
+                    <button class="icon-button" aria-label="Choose an emoji"><svg><use href="#icon-smile" /></svg></button>
+                    <button class="send-button" aria-label="Send message"><svg><use href="#icon-send" /></svg></button>
+                  </footer>
+                </article>
+                <aside class="preference-rail">
+                  <section class="preference-card">
+                    <h2>Match preferences</h2>
+                    <span class="field-label">Show me</span>
+                    <div class="segmented"><button class="selected">Everyone</button><button>Women</button><button>Men</button></div>
+                    <div class="range-label"><span>Age range</span><em>18 – 35</em></div>
+                    <div class="fake-range"><span></span><i></i><i></i></div>
+                    <span class="field-label">Country</span>
+                    <label class="select-wrap"><select><option>India</option><option>Any country</option></select><svg><use href="#icon-chevron" /></svg></label>
+                    <span class="field-label">Interests</span>
+                    <div class="interest-chips"><button class="selected">Movies</button><button class="selected">Music</button><button>Gaming</button><button><b>＋</b> Add</button></div>
+                    <div class="pref-switch"><span><b>Same region first</b><small>Match nearby people when possible</small></span><button class="switch is-on" role="switch" aria-checked="true"><i></i></button></div>
+                  </section>
+                  <section class="stay-safe"><h2><svg><use href="#icon-lock" /></svg>Stay safe</h2><p>Never share your number, address or social handles. Use Report if anyone makes you uncomfortable — we review every report.</p></section>
+                </aside>
+              </div>
+            </section>
+
+            <section id="messages-page" class="page messages-page" aria-label="Messages">
+              <aside class="message-list">
+                <div class="message-list-heading"><h1>Messages</h1><button class="icon-button" data-toast="New message composer is ready in the full product."><svg><use href="#icon-edit" /></svg></button></div>
+                <label class="search-box"><svg><use href="#icon-search" /></svg><input placeholder="Search people" /></label>
+                <div class="message-filters"><button class="filter-active"><svg><use href="#icon-settings" /></svg>Filters · 3</button><button>25–40</button><button>India</button></div>
+                <div class="people-list" id="people-list">
+                  <button class="person-row selected" data-person="Anil" data-detail="Online now · Delhi, India"><span class="avatar">A<i></i></span><span><b>Anil, 27</b><small>Hey there!</small></span><time>10:27</time></button>
+                  <button class="person-row" data-person="Kavya" data-detail="Online now · Mumbai, India"><span class="avatar">K<i></i></span><span><b>Kavya, 29</b><small>Let’s catch up tomorrow.</small></span><time>9:12 <em>2</em></time></button>
+                  <button class="person-row" data-person="Rohan" data-detail="Online now · Bengaluru, India"><span class="avatar">R</span><span><b>Rohan, 35</b><small>That sounds like a good idea.</small></span><time>Yesterday</time></button>
+                  <button class="person-row" data-person="Aditya" data-detail="Away · Pune, India"><span class="avatar">A<i></i></span><span><b>Aditya, 40</b><small>Are you free now?</small></span><time>Yesterday <em>1</em></time></button>
+                  <button class="person-row" data-person="Meera" data-detail="Online now · Kolkata, India"><span class="avatar">M</span><span><b>Meera, 38</b><small>▧ Sent a photo</small></span><time>Mon</time></button>
+                  <button class="person-row" data-person="Noor" data-detail="Online now · Jaipur, India"><span class="avatar">N<i></i></span><span><b>Noor, 31</b><small>Nice to meet you!</small></span><time>Sun</time></button>
+                  <button class="person-row" data-person="Dev" data-detail="Online now · Goa, India"><span class="avatar">D</span><span><b>Dev, 26</b><small>Haha same here</small></span><time>Sat</time></button>
+                </div>
+              </aside>
+              <article class="message-thread">
+                <header class="conversation-header"><button class="back-to-list icon-button" aria-label="Back to messages"><svg><use href="#icon-back" /></svg></button><div class="contact"><span class="avatar avatar-blue person-avatar">A<i></i></span><span><b id="person-name">Anil, 27</b><small id="person-detail">Online now · Delhi, India</small></span></div><div class="conversation-actions"><button class="button button-quiet"><svg><use href="#icon-flag" /></svg>Report</button><button class="button button-quiet"><svg><use href="#icon-block" /></svg>Block</button></div></header>
+                <div class="thread-messages" id="direct-messages">
+                  <span class="day-chip">Today</span>
+                  <div class="bubble incoming">Hey there! I’m Anil.<small>10:24</small></div>
+                  <div class="bubble incoming">How’s your day going?<small>10:25</small></div>
+                  <div class="bubble outgoing">Pretty good, thanks for asking. Just finished work.<small>10:26 <span>✓✓</span></small></div>
+                  <div class="bubble incoming photo-message">Nice to meet you here :) Look where I went last weekend.<small>10:27</small><span class="photo-placeholder"><span class="sun"></span><i></i><b></b></span><small>10:27</small></div>
+                  <div class="bubble outgoing reply-photo"><span class="reply-ref">│ Anil · Photo</span>That looks amazing! Where is this?<small>10:29 <span>✓✓</span></small></div>
+                  <div class="typing"><span></span><span></span><span></span></div>
+                </div>
+                <footer class="composer direct-composer" data-composer="direct-messages"><button class="icon-button"><svg><use href="#icon-plus" /></svg></button><input aria-label="Write a message" placeholder="Write a message" /><button class="icon-button"><svg><use href="#icon-smile" /></svg></button><button class="send-button"><svg><use href="#icon-send" /></svg></button></footer>
+              </article>
+            </section>
+
+            <section id="groups-page" class="page groups-page" aria-label="Groups">
+              <div class="page-top groups-top"><div><h1>Groups</h1><p>Join a room and meet people who like what you like.</p></div><button class="button button-primary" data-toast="Group creation is ready in the full product."><svg><use href="#icon-plus" /></svg>Create group</button></div>
+              <div class="group-toolbar"><label class="search-box"><svg><use href="#icon-search" /></svg><input placeholder="Search groups" /></label><div class="group-tabs"><button class="selected">All</button><button>Friends</button><button>Music</button><button>Movies</button><button>Gaming</button><button>Study</button><button>Photography</button></div></div>
+              <div class="group-grid" id="group-grid">
+                <article class="group-card" data-group="Friends Forever" data-members="12.4K" data-online="214" data-icon="heart"><div class="group-banner banner-friends"><span class="group-icon"><svg><use href="#icon-heart" /></svg></span><span><i class="online-dot white"></i>214 online</span></div><div class="group-card-body"><h2>Friends Forever</h2><p>Meet people, talk about your day and make new connections.</p><footer><span>12.4K members</span><button class="button button-primary join-group">Join group</button></footer></div></article>
+                <article class="group-card" data-group="Movie Buffs" data-members="8.7K" data-online="131" data-icon="film"><div class="group-banner banner-movies"><span class="group-icon"><svg><use href="#icon-film" /></svg></span><span><i class="online-dot white"></i>131 online</span></div><div class="group-card-body"><h2>Movie Buffs</h2><p>Talk cinema, favourite scenes and what to watch next.</p><footer><span>8.7K members</span><button class="button button-primary join-group">Join group</button></footer></div></article>
+                <article class="group-card" data-group="Music Vibes" data-members="10.1K" data-online="176" data-icon="music"><div class="group-banner banner-music"><span class="group-icon"><svg><use href="#icon-music" /></svg></span><span><i class="online-dot white"></i>176 online</span></div><div class="group-card-body"><h2>Music Vibes</h2><p>Discover artists and share the songs on repeat.</p><footer><span>10.1K members</span><button class="button button-primary join-group">Join group</button></footer></div></article>
+                <article class="group-card" data-group="Study Room" data-members="9.3K" data-online="98" data-icon="book"><div class="group-banner banner-study"><span class="group-icon"><svg><use href="#icon-book" /></svg></span><span><i class="online-dot white"></i>98 online</span></div><div class="group-card-body"><h2>Study Room</h2><p>Focus sessions, learning tips and a little motivation.</p><footer><span>9.3K members</span><button class="button button-primary join-group">Join group</button></footer></div></article>
+                <article class="group-card" data-group="Gaming Arena" data-members="11.6K" data-online="203" data-icon="game"><div class="group-banner banner-gaming"><span class="group-icon"><svg><use href="#icon-game" /></svg></span><span><i class="online-dot white"></i>203 online</span></div><div class="group-card-body"><h2>Gaming Arena</h2><p>Games, updates, strategies and casual team-ups.</p><footer><span>11.6K members</span><button class="button button-primary join-group">Join group</button></footer></div></article>
+                <article class="group-card" data-group="Photography" data-members="6.2K" data-online="64" data-icon="camera"><div class="group-banner banner-photo"><span class="group-icon"><svg><use href="#icon-camera" /></svg></span><span><i class="online-dot white"></i>64 online</span></div><div class="group-card-body"><h2>Photography</h2><p>Share your perspective and learn from other creators.</p><footer><span>6.2K members</span><button class="button button-primary join-group">Join group</button></footer></div></article>
+                <article class="group-card optional-group" data-group="Tech Talk" data-members="7.8K" data-online="112" data-icon="code"><div class="group-banner banner-tech"><span class="group-icon"><svg><use href="#icon-code" /></svg></span><span><i class="online-dot white"></i>112 online</span></div><div class="group-card-body"><h2>Tech Talk</h2><p>Gadgets, code and the stuff you are building this week.</p><footer><span>7.8K members</span><button class="button button-primary join-group">Join group</button></footer></div></article>
+                <article class="group-card optional-group" data-group="Travel Tales" data-members="5.4K" data-online="71" data-icon="globe"><div class="group-banner banner-travel"><span class="group-icon"><svg><use href="#icon-globe" /></svg></span><span><i class="online-dot white"></i>71 online</span></div><div class="group-card-body"><h2>Travel Tales</h2><p>Trip stories, hidden spots and tips from people on the move.</p><footer><span>5.4K members</span><button class="button button-primary join-group">Join group</button></footer></div></article>
+                <article class="group-card optional-group" data-group="Writers Corner" data-members="4.1K" data-online="48" data-icon="edit"><div class="group-banner banner-writing"><span class="group-icon"><svg><use href="#icon-edit" /></svg></span><span><i class="online-dot white"></i>48 online</span></div><div class="group-card-body"><h2>Writers Corner</h2><p>Share drafts, swap feedback and keep each other writing.</p><footer><span>4.1K members</span><button class="button button-primary join-group">Join group</button></footer></div></article>
+              </div>
+            </section>
+
+            <section id="room-page" class="page room-page" aria-label="Group chat">
+              <article class="room-card">
+                <header class="room-header"><button class="button button-quiet back-groups"><svg><use href="#icon-back" /></svg><span>Groups</span></button><span class="group-icon room-icon"><svg id="room-icon"><use href="#icon-heart" /></svg></span><span class="room-title"><b id="room-name">Friends Forever</b><small><span id="room-members">12.4K</span> members · <i class="online-dot"></i> <span id="room-online">214</span> online</small></span><div class="room-header-actions"><button class="icon-button" data-toast="Notifications are muted in this demo."><svg><use href="#icon-moon" /></svg></button><button class="icon-button" data-toast="More room actions are ready in the full product."><svg><use href="#icon-more" /></svg></button></div></header>
+                <div class="pinned-message"><svg><use href="#icon-pin" /></svg><b>Pinned · Be kind, respect boundaries and report unsafe behaviour.</b></div>
+                <div class="room-content"><div class="room-messages" id="room-messages"><span class="day-chip">Today</span><div class="group-message"><span class="avatar">M<i></i></span><div><p><b>Mira</b><em>MOD</em><time>10:31</time></p><div class="group-bubble">Welcome to Friends Forever! What brought everyone here today?</div><span class="reactions">♡ 4 &nbsp;&nbsp; ☺ 2</span></div></div><div class="group-message"><span class="avatar">R<i></i></span><div><p><b>Rohan</b><time>10:33</time></p><div class="group-bubble">I wanted to meet people who enjoy the same things.</div></div></div><div class="group-message"><span class="avatar">K<i></i></span><div><p><b>Kavya</b><time>10:34</time></p><div class="group-bubble quoted"><small>│ Rohan · I wanted to meet people...</small>Same here :) It is nice to have a friendly place to chat.</div></div></div><div class="group-message"><span class="avatar">N<i></i></span><div><p><b>Noor</b><time>10:35</time></p><div class="group-bubble">Feel free to say hello and join the conversation.</div></div></div><div class="new-message-rule"><span>New messages</span></div><div class="group-message"><span class="avatar">D<i></i></span><div><p><b>Dev</b><time>10:38</time></p><div class="group-bubble">Anyone up for a movie recommendation thread this weekend?</div></div></div><div class="bubble outgoing room-outgoing">Count me in!<small>10:39 <span>✓✓</span></small></div><div class="typing"><span></span><span></span><span></span></div></div><footer class="composer group-composer" data-composer="room-messages"><button class="icon-button"><svg><use href="#icon-plus" /></svg></button><input aria-label="Message the group" placeholder="Message the group · type @ to mention" /><button class="icon-button"><svg><use href="#icon-smile" /></svg></button><button class="send-button"><svg><use href="#icon-send" /></svg></button></footer></div>
+                <aside class="members-rail"><header><b>Online · <span id="members-online">214</span></b><span>LIVE</span></header><div class="member"><span class="avatar">M<i></i></span><span><b>Mira</b><small>Moderator</small></span></div><div class="member"><span class="avatar">R<i></i></span><span><b>Rohan</b><small>Active now</small></span></div><div class="member"><span class="avatar">K<i></i></span><span><b>Kavya</b><small>Active now</small></span></div><div class="member"><span class="avatar">N<i></i></span><span><b>Noor</b><small>Reading</small></span></div><div class="member"><span class="avatar">D<i></i></span><span><b>Dev</b><small>Active now</small></span></div><div class="member"><span class="avatar">S<i></i></span><span><b>Sana</b><small>Active now</small></span></div><div class="member"><span class="avatar avatar-blue">M<i></i></span><span><b class="display-name">moonlight</b><small>You</small></span></div><div class="room-rules"><b>Room rules</b><p>Be kind, respect boundaries, and report unsafe behaviour.</p></div></aside>
+              </article>
+            </section>
+
+            <section id="settings-page" class="page settings-page" aria-label="Settings">
+              <div class="page-top"><div><h1>Settings</h1><p>A few simple controls to make Drift feel like yours.</p></div></div>
+              <div class="settings-grid"><div class="settings-column"><section class="settings-card profile-card"><h2>Profile</h2><p>How you appear in conversations.</p><div class="profile-display"><span class="avatar avatar-large avatar-blue">M</span><span><b class="display-name">moonlight</b><small>Guest · joined today</small></span></div><label class="field-label">Display name</label><label class="editable-field"><input id="settings-name" value="moonlight" /><svg><use href="#icon-edit" /></svg></label><small class="field-help">This is the name people see in chats.</small><button class="button button-primary save-name">Save changes</button></section><section class="settings-card account-card"><h2>Account</h2><p>You’re exploring Drift as a guest.</p><div class="account-callout"><h3>Keep your chats and username</h3><p>Create a free account to save conversations, sync across devices and reserve your name.</p><button class="button button-primary" data-toast="Account creation is ready in the full product.">Create account</button><button class="button button-secondary" data-toast="Log in is ready in the full product.">Log in</button></div></section></div><div class="settings-column"><section class="settings-card safety-card"><h2>Privacy &amp; safety</h2><p>Choose what others can see.</p><div class="setting-row"><span><b>Show my age</b><small>Visible on your profile card</small></span><button class="switch is-on" role="switch" aria-checked="true"><i></i></button></div><div class="setting-row"><span><b>Show my country and region</b><small>Helps people find nearby chats</small></span><button class="switch is-on" role="switch" aria-checked="true"><i></i></button></div><div class="setting-row"><span><b>Allow messages from strangers</b><small>Turn off to only hear from people you’ve matched with</small></span><button class="switch" role="switch" aria-checked="false"><i></i></button></div><div class="setting-row"><span><b>Blur images from new chats</b><small>Tap to reveal photos from people you don’t know</small></span><button class="switch is-on" role="switch" aria-checked="true"><i></i></button></div><button class="setting-row blocked-row" data-toast="Your blocked users list has 3 people."><span><b>Blocked users</b><small>3 people</small></span><svg><use href="#icon-arrow" /></svg></button></section><section class="settings-card appearance-card"><h2>Appearance</h2><p>Pick a theme for Drift.</p><div class="theme-options"><button class="theme-card selected" data-theme="light"><span class="theme-preview preview-light"><i></i><b></b></span>Light</button><button class="theme-card" data-theme="dark"><span class="theme-preview preview-dark"><i></i><b></b></span>Dark</button><button class="theme-card" data-theme="system"><span class="theme-preview preview-system"><i></i><b></b></span>System</button></div></section></div></div>
+            </section>
+          </main>
+
+          <nav class="mobile-nav" aria-label="Main navigation">
+            <button class="active" data-page-target="chat"><svg><use href="#icon-random" /></svg><span>Random</span></button><button data-page-target="messages"><span class="mobile-notification">3</span><svg><use href="#icon-message" /></svg><span>Messages</span></button><button data-page-target="groups"><svg><use href="#icon-users" /></svg><span>Groups</span></button><button data-page-target="settings"><svg><use href="#icon-settings" /></svg><span>Settings</span></button>
+          </nav>
+        </div>
+      </section>
+    </div>
+
+    <div id="search-modal" class="modal" hidden role="dialog" aria-modal="true" aria-labelledby="search-title">
+      <div class="modal-card search-card"><button class="modal-close" aria-label="Close">×</button><div class="search-orbits"><span>?</span></div><h2 id="search-title">Looking for someone to chat with</h2><p>Usually under 10 seconds · 2,418 online</p><button class="button button-secondary modal-cancel">Cancel</button></div>
+    </div>
+    <div id="report-modal" class="modal" hidden role="dialog" aria-modal="true" aria-labelledby="report-title">
+      <form class="modal-card report-card"><button type="button" class="modal-close" aria-label="Close">×</button><h2 id="report-title">What happened?</h2><label class="report-choice selected"><input type="radio" name="report-reason" checked /><span>Harassment or bullying</span></label><label class="report-choice"><input type="radio" name="report-reason" /><span>Sexual content</span></label><label class="report-choice"><input type="radio" name="report-reason" /><span>Spam or advertising</span></label><label class="report-choice"><input type="radio" name="report-reason" /><span>Might be under 18</span></label><footer><button type="button" class="button button-secondary modal-cancel">Cancel</button><button type="submit" class="button button-primary">Report &amp; block</button></footer></form>
+    </div>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
